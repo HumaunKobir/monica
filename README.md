@@ -1,3 +1,39 @@
+# Tag System Extension for Monica CRM
+
+## Approach & Implementation
+
+### Analysis of Existing System
+
+Monica currently has a basic tag system where:
+
+- Tags are stored in a `tags` table with `vault_id`, `name`, `slug`
+- Tags are only linked to `posts` via `post_tag` pivot table
+- No relationship exists between contacts and tags
+
+### Implementation Decisions
+
+#### 1. Database Schema
+
+- **Added `category` and `color` columns** to tags table for better organization
+- **Created `contact_tag` pivot table** for many-to-many relationship between contacts and tags
+- **Added strategic indexes**:
+  - Composite index on `(contact_id, tag_id)` for quick lookups
+  - Index on `(tag_id, contact_id)` for tag usage counting
+  - Indexes on `(vault_id, name)` and `(vault_id, slug)` for faster tag searches
+
+#### 2. Tag Filtering with AND Logic
+
+Implemented using a single SQL query with `whereHas` and count condition:
+
+```sql
+-- Equivalent query generated:
+SELECT * FROM contacts
+WHERE EXISTS (SELECT 1 FROM contact_tag WHERE contact_id = contacts.id AND tag_id IN (...))
+GROUP BY contacts.id
+HAVING COUNT(DISTINCT tag_id) = :tag_count
+
+
+
 <p align="center">
 
 ![Monica’s Logo](https://user-images.githubusercontent.com/61099/242266547-63d98bd9-35f3-4dfe-92f4-a4a8dd75aa5c.png)
@@ -182,3 +218,4 @@ Monica makes use of numerous open-source projects and we are deeply grateful. We
 Copyright © 2016–2023
 
 Licensed under [the AGPL License](/LICENSE.md).
+```

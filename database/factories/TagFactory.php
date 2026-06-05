@@ -7,7 +7,7 @@ use App\Models\Vault;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tag>
+ * @extends Factory<Tag>
  */
 class TagFactory extends Factory
 {
@@ -24,6 +24,8 @@ class TagFactory extends Factory
             'vault_id' => Vault::factory(),
             'name' => $this->faker->name(),
             'slug' => $this->faker->name(),
+            'category' => $this->faker->randomElement(['Personal', 'Work', 'Networking', null]),
+            'color' => $this->faker->optional()->hexColor(),
         ];
     }
 }

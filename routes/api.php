@@ -1,6 +1,7 @@
 <?php
 
 use App\Domains\Settings\ManageUsers\Api\Controllers\UserController;
+use App\Domains\Vault\ManageVault\Api\Controllers\TagApiController;
 use App\Domains\Vault\ManageVault\Api\Controllers\VaultController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,17 @@ Route::middleware('auth:sanctum')->name('api.')->group(function () {
 
     // vaults
     Route::apiResource('vaults', VaultController::class);
+
+    // Tag endpoints
+    Route::get('tags', [TagApiController::class, 'index']);
+    Route::post('tags', [TagApiController::class, 'store']);
+    Route::put('tags/{id}', [TagApiController::class, 'update']);
+    Route::delete('tags/{id}', [TagApiController::class, 'destroy']);
+
+    // Contact tag endpoints
+    Route::post('contacts/{id}/tags', [TagApiController::class, 'attachTags']);
+    Route::delete('contacts/{contactId}/tags/{tagId}', [TagApiController::class, 'detachTag']);
+
+    // Override contacts index to support tag filtering
+    Route::get('contacts', [TagApiController::class, 'getContactsWithTags']);
 });

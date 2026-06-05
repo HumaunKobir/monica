@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Account::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->string('name')->default('contacts');
+            $table->string('name', 100)->default('contacts');
             $table->timestamp('timestamp');
             $table->timestamps();
 

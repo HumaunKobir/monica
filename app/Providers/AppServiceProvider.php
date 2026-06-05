@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
@@ -32,6 +33,7 @@ use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 use League\CommonMark\MarkdownConverter;
+use Safe\Exceptions\NetworkException;
 use SocialiteProviders\Azure\AzureExtendSocialite;
 use SocialiteProviders\Facebook\FacebookExtendSocialite;
 use SocialiteProviders\GitHub\GitHubExtendSocialite;
@@ -88,7 +90,7 @@ class AppServiceProvider extends ServiceProvider
                     if (($entries = \Safe\dns_get_record($hostname, $type)) != null) {
                         return collect($entries);
                     }
-                } catch (\Safe\Exceptions\NetworkException) {
+                } catch (NetworkException) {
                     // ignore
                 }
 
@@ -166,6 +168,7 @@ class AppServiceProvider extends ServiceProvider
 
         Vite::prefetch(concurrency: 3);
 
-        Gate::define('viewPulse', fn (User $user) => $user->is_instance_administrator || $this->app->environment('local'));
+        Gate::define('viewPulse', fn (User $user) => $user->is_instance_adZministrator || $this->app->environment('local'));
+        Schema::defaultStringLength(191);
     }
 }

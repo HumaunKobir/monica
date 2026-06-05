@@ -15,13 +15,13 @@ return new class extends Migration
         Schema::create('user_tokens', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->string('driver_id', 256);
+            $table->string('driver_id', 100);
             $table->string('driver', 50);
             $table->char('format', 6);
-            $table->string('email', 1024)->nullable();
-            $table->string('token', 4096);
-            $table->string('token_secret', 2048)->nullable();
-            $table->string('refresh_token', 2048)->nullable();
+            $table->string('email', 100)->nullable();
+            $table->string('token', 100);
+            $table->string('token_secret', 100)->nullable();
+            $table->string('refresh_token', 100)->nullable();
             $table->unsignedBigInteger('expires_in')->nullable();
             $table->timestamps();
 
