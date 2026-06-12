@@ -575,30 +575,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@inertiajs/core@npm:2.3.25":
-  version: 2.3.25
-  resolution: "@inertiajs/core@npm:2.3.25"
+"@inertiajs/core@npm:2.3.26":
+  version: 2.3.26
+  resolution: "@inertiajs/core@npm:2.3.26"
   dependencies:
     "@types/lodash-es": "npm:^4.17.12"
-    axios: "npm:^1.13.5"
+    axios: "npm:^1.16.0"
     laravel-precognition: "npm:^1.0.2"
     lodash-es: "npm:^4.18.1"
     qs: "npm:^6.15.0"
-  checksum: 10c0/6da41689564fdfeb5d2e466fc690c48b384a06dff2572cb41f6f591afb590837dafaff2af4a0cc814e0c0a937f2efe86dd9341179bfa5bab278bf8bbe860b8f0
+  checksum: 10c0/1368a21c6efef0528f2f836f3a9f8d62d86c9e1129e35b99dec9930f9d4ba3fe60a1e93ae56052e5ce17cae09e1fd80e69d7103f41110230a522e9d77ba65454
   languageName: node
   linkType: hard
 
 "@inertiajs/vue3@npm:^2.0.17":
-  version: 2.3.25
-  resolution: "@inertiajs/vue3@npm:2.3.25"
+  version: 2.3.26
+  resolution: "@inertiajs/vue3@npm:2.3.26"
   dependencies:
-    "@inertiajs/core": "npm:2.3.25"
+    "@inertiajs/core": "npm:2.3.26"
     "@types/lodash-es": "npm:^4.17.12"
     laravel-precognition: "npm:^1.0.2"
     lodash-es: "npm:^4.18.1"
   peerDependencies:
     vue: ^3.0.0
-  checksum: 10c0/07d6cb5e4bdb0426a63f4f70bc1df687f3d8784d5b50fbd882c573d10343900884f3647bd8d2275d1b792cf8193eb18635364915d29a0eb888052362c350d813
+  checksum: 10c0/131ee46bcfe776d0bb8c73a4eb8d266449487464c5449189729977d39f0d7b2868ee88af33b1b3eb97c59ed685e7ed3d98c6b65e3d3f961e62a02edf9eed16c8
   languageName: node
   linkType: hard
 
@@ -1755,7 +1755,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.11.0, axios@npm:^1.13.5, axios@npm:^1.4.0":
+"axios@npm:^1.11.0, axios@npm:^1.16.0, axios@npm:^1.4.0":
   version: 1.17.0
   resolution: "axios@npm:1.17.0"
   dependencies:
